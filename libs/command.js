@@ -114,7 +114,11 @@ Command.prototype.getFileList = function (dirname, callback) {
 
       // filename/dirname format
       prop.name = filePropArr.join(",").slice(dirnameLength);
-      prop.path = "http://" + that.endpoint + dirname + "/" + prop.name;
+      if (dirname === '/') {
+        prop.path = "http://" + that.endpoint + "/" + prop.name;
+      } else {
+        prop.path = "http://" + that.endpoint + dirname + "/" + prop.name;
+      }
 
       // time fortam
       var time = [];
