@@ -101,6 +101,9 @@ Command.prototype.getFileList = function (dirname, callback) {
     }
 
     files = files.slice(1).map(function (filename) {
+      if (filename[0] === ',') {
+        filename = '/' + filename;
+      }
       var filePropArr = filename.split(","),
           prop = {};
 
